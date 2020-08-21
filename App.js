@@ -2,22 +2,20 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 //import {Request} from 'request';
+import MovieGallery from 'organisms/MovieGallery';
+
+
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>hi nickyy!</Text>
-      <Movie title="barf"/>
+      <Text style={{fontFamily:"sans-serif-medium", fontSize:30}}>wassup sibs</Text>
+      <MovieGallery />
       <StatusBar style="auto" />
     </View>
   );
 }
 
-function Movie(props) {
-  return (
-      <Text>{props.title}</Text>
-  );
-}
 
 const styles = StyleSheet.create({
   container: {
