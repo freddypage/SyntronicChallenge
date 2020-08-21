@@ -9,7 +9,7 @@ import MovieGallery from 'organisms/MovieGallery';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={{fontFamily:"sans-serif-medium", fontSize:30}}>wassup sibs</Text>
+      <Text style={{fontFamily:"sans-serif-medium", fontSize:30  }}>wassup sibs</Text>
       <MovieGallery />
       <StatusBar style="auto" />
     </View>
