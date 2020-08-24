@@ -1,5 +1,5 @@
 ﻿import React, {useState, Component} from 'react';
-import {Image, Text, TextInput, View, ActivityIndicator} from 'react-native';
+import {View, ActivityIndicator, Image} from 'react-native';
 import { styles, buttons } from 'styles/style';
 
 
@@ -13,20 +13,25 @@ class Poster extends Component {
     constructor(props){
         super(props);
         this.state = {
-            isLoading: true
+            isLoading: true,
+            modalVisible: false
         }
     }
 
     render() {
-        const {isLoading} = this.state;
+
+        const {isLoading, modalVisible} = this.state;
+
         return(
-            <View style={styles.centered}>
-                {isLoading ? <ActivityIndicator/> : 
-            (<Image resizeMode={'cover'} style={styles.image} 
-                source={{uri:"https://image.tmdb.org/t/p/original"+this.props.url}}
-                />
-            )}
-            </View>
+            
+                <View style={styles.centered}>
+                    {isLoading ? <ActivityIndicator/> :                
+                    (
+                        <Image resizeMode={'cover'} style={styles.image} 
+                        source={{uri:"https://image.tmdb.org/t/p/original"+this.props.url}}
+                        />                
+                    )}               
+                </View> 
         );
     }
 }

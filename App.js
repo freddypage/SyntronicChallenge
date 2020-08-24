@@ -1,27 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-//import {Request} from 'request';
-import MovieGallery from 'organisms/MovieGallery';
+import React, {useState} from 'react';
+import {createStore} from 'redux';
+import { Provider } from 'react-redux';
+import DashBoard from './src/components/organisms/Dashboard';
 
 
+const initialState = {
+  counter:0
+}
+
+const reducer = (state = initialState) => {
+  return state
+}
+
+const store = createStore(reducer);
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={{fontFamily:"sans-serif-medium", fontSize:30  }}>wassup sibs</Text>
-      <MovieGallery />
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <DashBoard/>
+    </Provider>
   );
 }
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
