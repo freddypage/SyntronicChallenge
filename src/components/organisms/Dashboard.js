@@ -4,25 +4,28 @@ import {View, Text} from 'react-native';
 //import {Request} from 'request';
 import MovieGallery from 'organisms/MovieGallery';
 import {styles} from 'styles/style';
-import SelectionTab from 'atoms/SelectionTab';
+import SelectionTab from 'molecules/SelectionTab';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 class DashBoard extends Component {
     render() {
         
         return (
-        <View style={styles.mainApp}>
+        <ScrollView>
+            <View style={styles.mainApp}>
 
-            <View style={styles.mainHeader}>
-            <Text style={styles.appTitle}>Syntronic Challenge</Text>
+                <View style={styles.mainHeader}>
+                <Text style={styles.appTitle}>Syntronic Challenge</Text>
+                </View>
+
+                <SelectionTab/>
+                <MovieGallery query="Trending"/>
+
+                <StatusBar style="auto" />
+
             </View>
-
-            <SelectionTab/>
-            <MovieGallery />
-
-            <StatusBar style="auto" />
-
-        </View>);
+        </ScrollView>);
     }
 }
 

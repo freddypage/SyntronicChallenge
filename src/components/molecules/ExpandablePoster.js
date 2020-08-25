@@ -2,27 +2,47 @@ import React, {useState, Component} from 'react';
 import {Image, View, TouchableHighlight, Modal, Text} from 'react-native';
 import { styles, buttons } from 'styles/style';
 import Poster from 'atoms/Poster';
-import MovieModal from 'atoms/MovieModal';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 class ExpandablePoster extends Component {
 
     componentDidMount() {
         this.setState({isLoading:false});
+        this.getStars();
         return
+    }
+
+    getStars(){
+        var str = "";
+        var i=0;
+        for(i; i<Math.floor(this.props.vote_average/2); i++)
+        {
+            str+='★';
+        }
+        for(i; i<5; i++)
+        {
+            str+='☆';
+        }
+        this.setState({stars:str});
+        return str;
     }
 
     constructor(props){
         super(props);
         this.state = {
             isLoading: true,
-            modalVisible: false
+            modalVisible: false,
+            vote_average:0,
+            stars:""
         }
     }
 
     render() {
 
-        const {modalVisible} = this.state;
+        const {modalVisible, stars, vote_average} = this.state;
+
+        
 
         return(
             
@@ -43,23 +63,29 @@ class ExpandablePoster extends Component {
                     style={styles.modal}
                     visible={modalVisible}
                     >
-                        <View style={styles.centeredView}>
-                            <View style={styles.modalView}>
-                                <Image resizeMode={'cover'} style={styles.image} 
-                        source={{uri:"https://image.tmdb.org/t/p/original"+this.props.url}}/>
-                                <Text style={styles.header}>{this.props.title}</Text>
-                                <Text style={styles.overview}>{this.props.overview}</Text>
+                        <ScrollView>
+                            <View style={styles.centeredView}>
+                                <View style={styles.modalView}>
+                                    <Image resizeMode={'cover'} style={[styles.image, styles.botGutter]} 
+                            source={{uri:"https://image.tmdb.org/t/p/original"+this.props.url}}/>
+                                    <Text style={[styles.header,styles.botGutter]}>{this.props.title}</Text>
+                                    <Text style={[styles.overview]}>{this.state.stars}</Text>
+                                    <Text style={styles.botGutter}>{this.props.vote_average}</Text>
 
-                                <TouchableHighlight
-                                style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
-                                onPress={() => {
-                                    this.setState({modalVisible:false})
-                                }}
-                                >
-                                    <Text style={styles.textStyle}>Hide</Text>
-                                </TouchableHighlight>
+                                    <Text style={[styles.overview, styles.botGutter]}>{this.props.overview}</Text>
+
+
+                                    <TouchableHighlight
+                                    style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+                                    onPress={() => {
+                                        this.setState({modalVisible:false})
+                                    }}
+                                    >
+                                        <Text style={styles.textStyle}>Hide</Text>
+                                    </TouchableHighlight>
+                                </View>
                             </View>
-                        </View>
+                        </ScrollView>
                     </Modal>
                 </View>
             

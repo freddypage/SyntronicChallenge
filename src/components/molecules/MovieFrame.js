@@ -6,8 +6,14 @@ import ExpandablePoster from 'molecules/ExpandablePoster';
 
 function MovieFrame(props){
     return(
-        <View style={[styles.container, styles.movieFrame]}>
-            <ExpandablePoster id={props.id} url={props.url} title={props.title} overview={props.overview}/>
+        <View style={[styles.movieFrame]}>
+            <ExpandablePoster 
+            id={props.id} 
+            url={props.url} 
+            title={props.title} 
+            overview={props.overview}
+            adult={props.adult}
+            vote_average={props.vote_average}/>
             <TitleCard title={props.title} overview={props.overview}/> 
         </View>
     );

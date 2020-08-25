@@ -13,42 +13,52 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     header: {
-        fontFamily: 'Roboto',
+        fontFamily: 'OpenSans-Regular',
         fontSize: 20,
+        textAlign:"center"
+    },
+    botGutter: {
+        marginBottom: 10
     },
     image: {
         width:135, 
-        height:200
+        height:200,
+        borderRadius: 20
     },
     movieFrame: {
-        width:(Dimensions.get('window').width / 2) - 20,
-        margin:10
+        width:150,
+        alignItems:"center",
+        marginTop:10,
+        marginLeft:10,
+        marginRight:10
     },
     movieGallery:
     {
         width: '100%',
         display:"flex",
         flexDirection: 'row',
-        flex:4,
+        flex:3,
         justifyContent: "space-between",
-        alignItems: "center"
+        alignItems: "center",
     },
     appTitle: {
-        fontFamily: 'Roboto',
+        fontFamily: 'OpenSans-Regular',
         fontSize: 30,
         padding: 40
     },
     mainApp: {
-        flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-        display:"flex"
+        display:"flex",
+        height:600,
+        overflow:"scroll"
     },
     mainHeader: {
         flex:1,
         alignItems:"center",
-        textAlign: "center"
+        textAlign: "center",
+        paddingTop:10
     },
     searchBar: {
         flex:1,
@@ -57,7 +67,7 @@ const styles = StyleSheet.create({
         justifyContent:"center"
     },
     searchText: {
-        fontFamily: "Roboto",
+        fontFamily: "OpenSans-Regular",
         fontSize:20,
         margin:20,
         padding:10,
@@ -68,7 +78,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor:'rgba(0, 0, 0, 0.7)'
+        backgroundColor:'rgba(0, 0, 0, 0.7)',
+        minHeight:Dimensions.get('window').height
       },
       modalView: {
         margin: 20,
@@ -86,16 +97,16 @@ const styles = StyleSheet.create({
         elevation: 5
       },
       openButton: {
-        backgroundColor: "#F194FF",
         borderRadius: 20,
-        padding: 10,
-        elevation: 2
+        padding: 5,
+        elevation: 2,
+        width:135
       },
       textStyle: {
         color: "white",
         fontWeight: "bold",
         textAlign: "center",
-        fontFamily:"Roboto",
+        fontFamily:"OpenSans-Regular",
         fontSize:15,
         paddingLeft:15,
         paddingRight:15
@@ -108,19 +119,21 @@ const styles = StyleSheet.create({
           marginTop: 10,
       },
       selectionTab: {
-          textAlign: "left",
+          textAlign: "center",
           flex: 1,
           display: "flex",
-          justifyContent: "flex-start",
+          justifyContent: "center",
 
       },
       modal: {
-          backgroundColor: 'rgba(0, 0, 0, 0.7)'
+          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          minHeight: Dimensions.get('window').height
       },
       overview: {
-          fontFamily:"Roboto",
+          fontFamily:"OpenSans-Regular",
           fontSize:15,
-          padding:5
+          padding:5,
+          textAlign:"center"
       }
 });
 
