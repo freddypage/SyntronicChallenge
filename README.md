@@ -15,3 +15,7 @@ The Three main features of my application are:
 2) A Movie Gallery section that populates Movie Frames with data from each item retrieved
 3) Expandable Movie Modal that displays rating, movie overview and other pertinent data.
 
+## Fonts and Other Assets
+Open Sans pulled from https://fonts.google.com/specimen/Open+Sans (loaded in app)
+Images are retrieved from API (as a 'poster'
+
