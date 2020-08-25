@@ -134,6 +134,12 @@ const styles = StyleSheet.create({
           fontSize:15,
           padding:5,
           textAlign:"center"
+      },
+      hyperlink: {
+          color:'#6adef7'
+      },
+      smallText: {
+          fontSize:13
       }
 });
 

@@ -3,6 +3,7 @@ import {Image, View, ActivityIndicator, TouchableHighlight, Pressable, Text, Lin
 import { styles, buttons } from 'styles/style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ModalSelector from 'react-native-modal-selector';
+import {connect} from 'react-redux';
 
 
 class SelectionTab extends Component {
@@ -33,23 +34,26 @@ class SelectionTab extends Component {
 
                 <ModalSelector 
                 data={data}
-                onChange={(option)=>{ this.setState({selected:option.label, url:option.url})}}
+                onChange={(option)=>{ 
+                    this.setState({url:option.url})
+                    this.props.dispatch({type:option.label});
+                }}
                 backdropPressToClose={true}
                 visible={this.state.showModal}>
                     <TouchableOpacity onPress={ () => {
                             this.setState({showModal:true});
                         }
                     }>
-                        <Text style={[styles.header, styles.botGutter]}>{this.state.selected} ▼</Text>
+                        <Text style={[styles.header, styles.botGutter]}>{this.props.query} ▼</Text>
                     </TouchableOpacity>
                 </ModalSelector>
 
-                <Text style={[styles.overview, styles.botGutter]}>Results retrieved from this API</Text>
+                <Text style={[styles.overview]}>Results retrieved from this API</Text>
 
                 <Text 
-            style={styles.overview} 
+            style={[styles.overview,styles.hyperlink]} 
             onPress={() => Linking.openURL(this.state.url)}>
-                    {this.state.url}</Text>
+                    Go To Link</Text>
             </View>
 
             
@@ -57,4 +61,10 @@ class SelectionTab extends Component {
     }
 }
 
-export default SelectionTab;
+function mapStateToProps(state) {
+    return {
+      query: state.query
+    };
+  }
+
+export default connect(mapStateToProps)(SelectionTab);

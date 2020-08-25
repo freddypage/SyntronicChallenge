@@ -4,6 +4,7 @@ import { ListView } from 'react-native';
 import {FlatList} from 'react-native';
 import MovieFrame from 'molecules/MovieFrame';
 import { styles, buttons } from 'styles/style';
+import {connect} from 'react-redux';
 
 
 
@@ -12,12 +13,12 @@ import { styles, buttons } from 'styles/style';
 class MovieGallery extends Component
 {
     componentDidMount() {
-        this.fetchFromAPI(this.state.query);
+        this.fetchFromAPI(this.props.query);
     }
 
     componentDidUpdate(prev){
         if(prev.query!=this.props.query){
-            this.fetchFromAPI(this.state.query);
+            this.fetchFromAPI(this.props.query);
         }
     }
 
@@ -34,7 +35,7 @@ class MovieGallery extends Component
                 url = 'https://api.themoviedb.org/3/movie/popular?api_key=c06e14cd13b2c6373fdc8f9f3dd47eb3&language=en-US&page=1';
                 break;
             case "Now Playing":
-                url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=api_key=c06e14cd13b2c6373fdc8f9f3dd47eb3&language=en-US&page=1';
+                url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=c06e14cd13b2c6373fdc8f9f3dd47eb3';
                 break;
             default: 
                 url = 'https://api.themoviedb.org/3/trending/movie/week?api_key=c06e14cd13b2c6373fdc8f9f3dd47eb3';
@@ -84,7 +85,7 @@ class MovieGallery extends Component
                         id={item.id} 
                         url={item.poster_path}
                         vote_average={item.vote_average}
-                        adult={item.adult}/>
+                        release_date={item.release_date}/>
                     }
                     />
                 )}
@@ -93,4 +94,11 @@ class MovieGallery extends Component
     }
 }
 
-export default MovieGallery;
+
+function mapStateToProps(state) {
+    return {
+      query: state.query
+    };
+  }
+
+export default connect(mapStateToProps)(MovieGallery);

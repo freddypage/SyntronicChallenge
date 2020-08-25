@@ -42,8 +42,6 @@ class ExpandablePoster extends Component {
 
         const {modalVisible, stars, vote_average} = this.state;
 
-        
-
         return(
             
                 <View>
@@ -71,9 +69,8 @@ class ExpandablePoster extends Component {
                                     <Text style={[styles.header,styles.botGutter]}>{this.props.title}</Text>
                                     <Text style={[styles.overview]}>{this.state.stars}</Text>
                                     <Text style={styles.botGutter}>{this.props.vote_average}</Text>
-
                                     <Text style={[styles.overview, styles.botGutter]}>{this.props.overview}</Text>
-
+                                    <Text style={[styles.overview, styles.botGutter, styles.smallText]}>Released: {this.props.release_date}</Text>
 
                                     <TouchableHighlight
                                     style={{ ...styles.openButton, backgroundColor: "#2196F3" }}

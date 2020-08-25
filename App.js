@@ -7,11 +7,27 @@ import {useFonts} from 'expo-font';
 
 
 const initialState = {
-  counter:0
+  query:"Trending"
 }
 
-const reducer = (state = initialState) => {
-  return state
+const reducer = (state = initialState, action) => {
+  console.log('reducer', state, action);
+  switch(action.type) {
+    case 'Popular':
+      return {
+        query: "Popular"
+      };
+    case 'Trending':
+      return {
+        query: "Trending"
+      };
+    case 'Now Playing':
+      return {
+        query: "Now Playing"
+      };
+    default:
+      return state;
+  }
 }
 
 const store = createStore(reducer);

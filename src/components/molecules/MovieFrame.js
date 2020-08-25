@@ -12,7 +12,7 @@ function MovieFrame(props){
             url={props.url} 
             title={props.title} 
             overview={props.overview}
-            adult={props.adult}
+            release_date={props.release_date}
             vote_average={props.vote_average}/>
             <TitleCard title={props.title} overview={props.overview}/> 
         </View>
