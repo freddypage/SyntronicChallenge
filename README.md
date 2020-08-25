@@ -1,4 +1,4 @@
-# SyntronicChallenge
+# Syntronic Challenge
 
 ## Installation 
 Clone the project to your desired folder and run 'npm install'.
@@ -17,5 +17,8 @@ The Three main features of my application are:
 
 ## Fonts and Other Assets
 Open Sans pulled from https://fonts.google.com/specimen/Open+Sans (loaded in app)
-Images are retrieved from API (as a 'poster'
+Images are retrieved from API (as a 'poster')
+
+## Questions?
+Contact me at fredlepage782@gmail.com
 
