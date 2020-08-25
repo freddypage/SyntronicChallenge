@@ -1,7 +1,7 @@
-﻿import React, {useState} from 'react';
-import {Text, TextInput, View} from 'react-native';
+﻿import React from 'react';
+import { View} from 'react-native';
 import TitleCard from "atoms/TitleCard";
-import { styles, buttons } from 'styles/style';
+import { styles } from 'styles/style';
 import ExpandablePoster from 'molecules/ExpandablePoster';
 
 function MovieFrame(props){

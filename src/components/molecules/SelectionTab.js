@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Image, View, ActivityIndicator, TouchableHighlight, Pressable, Text, Linking} from 'react-native';
-import { styles, buttons } from 'styles/style';
+import { View, Text, Linking} from 'react-native';
+import { styles} from 'styles/style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ModalSelector from 'react-native-modal-selector';
 import {connect} from 'react-redux';
@@ -49,7 +49,6 @@ class SelectionTab extends Component {
                 </ModalSelector>
 
                 <Text style={[styles.overview]}>Results retrieved from this API</Text>
-
                 <Text 
             style={[styles.overview,styles.hyperlink]} 
             onPress={() => Linking.openURL(this.state.url)}>

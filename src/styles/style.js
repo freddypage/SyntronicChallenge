@@ -60,12 +60,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
         paddingTop:10
     },
-    searchBar: {
-        flex:1,
-        display:"flex",
-        flexDirection:"row",
-        justifyContent:"center"
-    },
     searchText: {
         fontFamily: "OpenSans-Regular",
         fontSize:20,
@@ -100,7 +94,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 5,
         elevation: 2,
-        width:135
+        width:145
       },
       textStyle: {
         color: "white",
@@ -133,7 +127,7 @@ const styles = StyleSheet.create({
           fontFamily:"OpenSans-Regular",
           fontSize:15,
           padding:5,
-          textAlign:"center"
+          textAlign:"left"
       },
       hyperlink: {
           color:'#6adef7'

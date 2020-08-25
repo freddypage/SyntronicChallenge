@@ -23,7 +23,7 @@ module.exports = function(api) {
             molecules: "./src/components/molecules",
             atoms: "./src/components/atoms",
             organisms: "./src/components/organisms",
-            navigation: './src/navigation',
+            tests: './src/tests',
           },
         },
       ],

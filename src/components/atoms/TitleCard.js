@@ -1,12 +1,11 @@
-﻿import React, {useState} from 'react';
-import {Text, TextInput, View} from 'react-native';
-import { styles, buttons } from 'styles/style';
+﻿import React from 'react';
+import {Text, View} from 'react-native';
+import { styles } from 'styles/style';
 
 function TitleCard (props){
     return(
         <View>
             <Text style={[styles.centered, styles.header, styles.titleCard]}>{props.title}</Text>
-            {/* <Text style={styles.centered}>{props.overview}</Text> */}
         </View>
     );
 }

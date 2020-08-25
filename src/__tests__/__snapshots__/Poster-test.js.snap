@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "justifyContent": "center",
+      "textAlign": "center",
+    }
+  }
+>
+  <Image
+    resizeMode="cover"
+    source={
+      Object {
+        "uri": "https://image.tmdb.org/t/p/originalundefined",
+      }
+    }
+    style={
+      Object {
+        "borderRadius": 20,
+        "height": 200,
+        "width": 135,
+      }
+    }
+  />
+</View>
+`;

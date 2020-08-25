@@ -1,9 +1,8 @@
-﻿import React, {useState, Component} from 'react';
-import {Text, TextInput, View, ActivityIndicator} from 'react-native';
-import { ListView } from 'react-native';
+﻿import React, {Component} from 'react';
+import {View, ActivityIndicator} from 'react-native';
 import {FlatList} from 'react-native';
 import MovieFrame from 'molecules/MovieFrame';
-import { styles, buttons } from 'styles/style';
+import { styles } from 'styles/style';
 import {connect} from 'react-redux';
 
 
@@ -12,48 +11,60 @@ import {connect} from 'react-redux';
 //expect query as props
 class MovieGallery extends Component
 {
+    //populate gallery on first load
     componentDidMount() {
         this.fetchFromAPI(this.props.query);
     }
 
+    //populate gallery on store state changes
     componentDidUpdate(prev){
         if(prev.query!=this.props.query){
             this.fetchFromAPI(this.props.query);
         }
     }
 
-    fetchFromAPI(str) {
-        //expects Trending, Now Playing, or Popular
-        this.setState({isLoading:true});
+    //takes a str returns an endpoint form movie database
+    formatEndpoint(str)
+    {
         var url;
+        var apiKey = "?api_key=c06e14cd13b2c6373fdc8f9f3dd47eb3";
+        var base_uri = "https://api.themoviedb.org/3/";
         switch(str)
         {
             case "Trending":
-                url = 'https://api.themoviedb.org/3/trending/movie/week?api_key=c06e14cd13b2c6373fdc8f9f3dd47eb3';
+                url = base_uri+'trending/movie/week'+apiKey;
                 break;
             case "Popular":
-                url = 'https://api.themoviedb.org/3/movie/popular?api_key=c06e14cd13b2c6373fdc8f9f3dd47eb3&language=en-US&page=1';
+                url = base_uri+'movie/popular'+apiKey;
                 break;
             case "Now Playing":
-                url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=c06e14cd13b2c6373fdc8f9f3dd47eb3';
+                url = base_uri+'movie/now_playing'+apiKey;
                 break;
             default: 
-                url = 'https://api.themoviedb.org/3/trending/movie/week?api_key=c06e14cd13b2c6373fdc8f9f3dd47eb3';
+                url = base_uri+'trending/movie/week'+apiKey;
                 break;
         }
-        //get list of popular movies
+        return url;
+    }
+
+    //get data from api
+    //returns null if request invalid
+    fetchFromAPI(str) {
+        this.setState({isLoading:true});
+        var url = this.formatEndpoint(str);
+        //get endpoint then fetch
         return fetch(url).then((response) => response.json())
         .then((responseJson) => {
-            //console.log(responseJson.results[0].id);
-            //console.log(responseJson.results[0].poster_path);
+            if(!responseJson||!responseJson.results||responseJson.success==false)
+            {
+                throw responseJson;
+            }
             this.setState({data:responseJson.results});
             this.setState({length:Object.keys(responseJson.results).length});
+            this.setState({ isLoading: false });
             return responseJson.results;
         })
         .catch((error) => console.log(error))
-        .finally(() => {
-            this.setState({ isLoading: false });
-        })
     }
 
     constructor(props)
